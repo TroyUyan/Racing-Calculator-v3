@@ -10,15 +10,15 @@
     <?php
     	switch ($htmlTitle) {
     		case "Basic":
-    			echo '<script src="js/calc-basic.js"></script>';
+    			echo '<script src="js/calc-basic.min.js"></script>';
     			break;
 
     		case "Advanced":
-    			echo '<script src="js/calc-advanced.js"></script>';
+    			echo '<script src="js/calc-advanced.min.js"></script>';
     			break;
 
     		case "Endurance":
-    			echo '<script src="js/calc-endurance.js"></script>';
+    			echo '<script src="js/calc-endurance.min.js"></script>';
     			break;
     		
     		default:
