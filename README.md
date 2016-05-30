@@ -20,5 +20,5 @@ It will be live at [racingcalculator.troyuyan.com](http://racingcalculator.troyu
 - Hints to optimize strategy
 - More dynamic strategy options (such as splitting fuel evenly amongst all stints)
 - Better calculations for multi-stop races with a "fuel left" option
-- Optimize "back-timing" algorithm for endurance race strategy
+- Optimized "back-timing" algorithm for endurance race strategy
 - Enhanced and redesigned interface & results display
