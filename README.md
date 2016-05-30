@@ -2,9 +2,11 @@
 
 Simulation racing fuel strategy calculator.
 
+The app is currently in development, but can be [previewed here](http://racingcalculator.troyuyan.com/v3).
+
 Progress can be tracked on the [project's Trello board](https://trello.com/b/qz2PcZ8E).
 
-It will be live at [racingcalculator.troyuyan.com](http://racingcalculator.troyuyan.com)!
+It will be live at [racingcalculator.troyuyan.com](http://racingcalculator.troyuyan.com) soon!
 
 ***
 
