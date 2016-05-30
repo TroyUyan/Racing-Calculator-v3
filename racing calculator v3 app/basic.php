@@ -73,6 +73,10 @@
     </form>
 
   </div><!--end row-->
+  <div id="row">
+    <hr>
+    <div id="results"></div>
+  </div><!--end row-->
 </div><!--end container-->
 
 <?php 

@@ -94,10 +94,37 @@ $(document).ready(function() {
 	// define function to create the results display
 	function createFormResults() {
 
+		// reset vars
+		var resultsBuildable = 0;
+		var errorText = "";
+
+		// check to make sure all require values are filled out, if not, form is not buildable and add that field as an error list item
+		if ( $("#race-distance").val() === "") {resultsBuildable = 0;errorText = "<li>You input a race distance.</li>";};
+		// get distance type and optionally require / validate the average race lap field
+		var raceDistanceType = $('ul#race-distance-type li.active a').html();
+		if (raceDistanceType == "Minutes") {
+			if ( $("#average-race-lap").val() === "") {resultsBuildable = 0;errorText = errorText + "<li>You input an average race lap time.</li>";};
+		};
+		if ( $("#fuel-per-lap").val() === "") {resultsBuildable = 0;errorText = errorText + "<li>You input the average fuel usage per lap.</li>";};
+		if ( $("#fuel-tank-size").val() === "") {resultsBuildable = 0;errorText = errorText + "<li>You input the max fuel tank size.</li>";};
+
+		// if no errors
+		if (errorText == "") {
+			// form ready
+			resultsBuildable = 1;
+			$("#results").html("<h2 style='color:green'>EVERYTHING READY</h2><p><span class='glyphicon glyphicon-refresh glyphicon-spin' aria-hidden='true'></span> Processing...   *NOT IMPLEMENTED*</p>");
+		} else {
+			// else, display list of errors
+			$("#results").html("<p>The results will be ready when:</p><ul>" + errorText + "</ul>");
+		}
+
+
+		// build the results
+		if (resultsBuildable === 1) {
+			// build code / loops here
+		};
 
 		// calc functions checks to make sure all required forms of the present state have valid values
-
-		console.log("results created");
 	
 
 	};// end createFormResults()
