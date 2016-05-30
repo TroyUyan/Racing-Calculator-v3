@@ -64,7 +64,7 @@
         <div class="form-group form-group-lg">
           <label for="fuel-tank-size" class="input-lg">What is the fuel tank size?</label>
           <div class="input-group">
-            <input type="number" class="form-control" id="fuel-tank-size" name="fuel-tank-size" placeholder="Example: 1.82">
+            <input type="number" class="form-control" id="fuel-tank-size" name="fuel-tank-size" placeholder="Example: 80">
             <div id="fuel-tank-size-addon" class="input-group-addon input-addon-lg">Liters</div>
           </div>
         </div>
