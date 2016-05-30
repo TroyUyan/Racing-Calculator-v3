@@ -1,42 +1,78 @@
-<?php 
+<?php
   $htmlTitle = "Basic";
 	include_once 'inc/header.inc.php';
 ?>
 
 <div class="container">
+
   <h1><?php echo $htmlTitle; ?> Racing Calculator</h1>
 
-  <form method="" action=""><!--Form-->
+  <div class="row">
 
-    <div class="form-group">
-    <label for="race-distance">Race Distance</label>
-    <input type="email" class="form-control" id="race-distance" placeholder="Email">
-    </div>
+    <div class="col-xs-12 col-md-6">
+      <h3>Race Distance Type</h3>
+      <ul id="race-distance-type" class="nav nav-pills nav-justified">
+        <li class="active"><a href="#">Laps</a></li>
+        <li><a href="#">Minutes</a></li>
+      </ul>
+    </div><!--end col-->
 
-    <label>How long is the race?</label>
-    <input type="number" step="any" name="race_length" placeholder="Example: 120" value="" required>
-    <select name="race_unit">
-      <option value="minutes">Minutes</option>
-      <option value="laps">Laps</option>
-    </select>
+    <div class="col-xs-12 col-md-6">
+      <h3>Fuel Unit Type</h3>
+      <ul id="fuel-unit-type" class="nav nav-pills nav-justified">
+        <li class="active"><a href="#">Liters</a></li>
+        <li><a href="#">Gallons</a></li>
+      </ul>
+    </div><!--end col-->
 
+  </div><!--end row-->
+  <div class="row">
 
-    <label>What is the average race lap time?</label>
-    <input type="number" step="any" name="race_lap" placeholder="Example: 92.349" value="<?php echo @"{$_POST['race_lap']}";?>" required>
-    <span class="postfix">Seconds</span>
-  
+    <form method="" action="">
 
-    <label>What is the average fuel usage per lap?</label>
-    <input type="number" step="any" name="avg_fuel" placeholder="Example: 1.82" value="<?php echo @"{$_POST['avg_fuel']}";?>" required>
-    <span class="postfix">Liters</span>
-    
-    <label>What is the fuel tank size?</label>
-    <input type="number" step="any" name="max_fuel" placeholder="Example: 90" value="<?php echo @"{$_POST['max_fuel']}";?>" required>
-    <span class="postfix">Liters</span>
+      <div class="col-xs-12 col-md-6">
+        <div class="form-group form-group-lg">
+          <label for="race-distance" class="input-lg">How long is the race?</label>
+          <div class="input-group">
+            <input type="number" class="form-control" id="race-distance" name="race-distance" placeholder="Example: 25">
+            <div class="input-group-addon input-addon-lg">Laps</div>
+          </div>
+        </div>
+      </div><!--end col-->
 
-    <input class="button small success" type="submit" value="Calculate the Data">
-  </form>
+      <div class="col-xs-12 col-md-6">
+        <div class="form-group form-group-lg">
+          <label for="average-race-lap" class="input-lg">What is the average race lap time?</label>
+          <div class="input-group">
+            <input type="number" class="form-control" id="average-race-lap" name="average-race-lap" placeholder="Example: 92.349">
+            <div class="input-group-addon input-addon-lg">Seconds</div>
+          </div>
+        </div>
+      </div><!--end col-->
 
+      <div class="col-xs-12 col-md-6">
+        <div class="form-group form-group-lg">
+          <label for="fuel-per-lap" class="input-lg">What is the average fuel usage per lap?</label>
+          <div class="input-group">
+            <input type="number" class="form-control" id="fuel-per-lap" name="fuel-per-lap" placeholder="Example: 1.82">
+            <div class="input-group-addon input-addon-lg">Liters</div>
+          </div>
+        </div>
+      </div><!--end col-->
+
+      <div class="col-xs-12 col-md-6">
+        <div class="form-group form-group-lg">
+          <label for="fuel-tank-size" class="input-lg">What is the fuel tank size?</label>
+          <div class="input-group">
+            <input type="number" class="form-control" id="fuel-tank-size" name="fuel-tank-size" placeholder="Example: 1.82">
+            <div class="input-group-addon input-addon-lg">Liters</div>
+          </div>
+        </div>
+      </div><!--end col-->
+
+    </form>
+
+  </div><!--end row-->
 </div><!--end container-->
 
 <?php 

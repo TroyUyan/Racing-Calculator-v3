@@ -1,4 +1,4 @@
-<?php 
+<?php
   $htmlTitle = "Home";
 	include_once 'inc/header.inc.php';
 ?>
