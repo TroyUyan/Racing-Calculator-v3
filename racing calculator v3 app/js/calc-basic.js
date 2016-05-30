@@ -90,4 +90,31 @@ $(document).ready(function() {
 
 	});//end click()
 
+	//// handle the calculator results
+	// define function to create the results display
+	function createFormResults() {
+
+
+		// calc functions checks to make sure all required forms of the present state have valid values
+
+		console.log("results created");
+	
+
+	};// end createFormResults()
+
+	// init results display
+	createFormResults();
+
+	// watch form fields for changes
+	$('#race-distance, #average-race-lap, #fuel-per-lap, #fuel-tank-size').on('keyup',function(){
+		// re-build results on change
+		createFormResults();
+	});//end keyup
+
+	// watch pills for changes
+	$('ul#race-distance-type li a, ul#fuel-unit-type li a').click(function() {
+		// re-build results on change
+		createFormResults();
+	});// end click
+
 });//end ready()
