@@ -24,14 +24,14 @@
       <h2>Advanced</h2>
       <p>Used for <strong>2 or more stop races</strong>.</p>
       <p>Match your fuel strategy with your tire choices in a Grand Prix or get the perfect calculations for your multi-stop sports car race.</p>
-      <p><a class="btn btn-primary" href="#" role="button">Launch Advanced &raquo;</a></p>
+      <p><a class="btn btn-primary" href="#" role="button" disabled="true">Launch Advanced &raquo;</a></p>
    </div>
     <div class="col-md-4">
       <img src="http://placehold.it/360x200" class="img-responsive" alt="">
       <h2>Endurance</h2>
       <p>Used for <strong>long multi-hour races</strong>.</p>
       <p>Find out how long your driver stints will be and base your fuel stops on the optimal back-timed strategy for long endurance races.</p>
-      <p><a class="btn btn-primary" href="#" role="button">Launch Endurance &raquo;</a></p>
+      <p><a class="btn btn-primary" href="#" role="button" disabled="true">Launch Endurance &raquo;</a></p>
     </div>
   </div>
 </div>
