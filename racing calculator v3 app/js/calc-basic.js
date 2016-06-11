@@ -125,7 +125,7 @@ $(document).ready(function() {
 		};
 
 		// calc functions checks to make sure all required forms of the present state have valid values
-	
+
 
 	};// end createFormResults()
 

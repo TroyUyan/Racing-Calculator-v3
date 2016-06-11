@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php if (isset($htmlTitle)) {echo $htmlTitle . " |";} ?> Racing Calculator | By Troy Uyan</title>
+    <title><?php if (isset($htmlTitle)) {echo $htmlTitle . " |";} ?> Racing Calculator | Troy Uyan</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.min.css" rel="stylesheet">
     <!--[if lt IE 9]>

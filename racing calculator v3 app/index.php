@@ -1,5 +1,5 @@
 <?php
-  $htmlTitle = "Home";
+  //$htmlTitle = "Home";
 	include_once 'inc/header.inc.php';
 ?>
 
@@ -36,6 +36,6 @@
   </div>
 </div>
 
-<?php 
+<?php
 	include_once 'inc/footer.inc.php';
 ?>

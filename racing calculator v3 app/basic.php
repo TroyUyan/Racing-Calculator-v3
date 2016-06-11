@@ -79,6 +79,6 @@
   </div><!--end row-->
 </div><!--end container-->
 
-<?php 
+<?php
 	include_once 'inc/footer.inc.php';
 ?>
