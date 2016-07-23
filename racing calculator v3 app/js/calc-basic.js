@@ -155,11 +155,11 @@ $(document).ready(function() {
 		// build the results!
 		if (resultsBuildable === 1) {
 
-			// get pill data
+			// get final pill data
 			var raceDistanceType = $('ul#race-distance-type li.active a').html();
 			var fuelUnitType = $('ul#fuel-unit-type li.active a').html();
 
-			// get all (needed) form data
+			// get all (needed) final form data
 			var raceDistance = $("#race-distance").val();
 			if (raceDistanceType == "Minutes") {
 				var averageRaceLap = $("#average-race-lap").val();
@@ -167,38 +167,33 @@ $(document).ready(function() {
 			var fuelPerLap = $("#fuel-per-lap").val();
 			var fuelTankSize = $("#fuel-tank-size").val();
 
-			// find laps and fuel needed, based on the raceDistanceType
+			// find final lap count, based on the raceDistanceType
 			if (raceDistanceType == "Minutes") {
-
 				// number of minutes times 60 to get race length in seconds
 				// divide that by the average race lap time, then add 1.1 laps as a safety buffer
 				// and then round the number up to get total full final laps
 				var finalLaps = Math.ceil(((raceDistance * 60) / averageRaceLap) + 1.1);
-
-				// define the safety buffer to add to fuel calculations to allow for the margin of error
-				// adding 1 liter, or 0.262 gallons, as a buffer. The amounts are the same.
-				if (fuelUnitType == "Liters") {
-					var fuelSafetyBufferAmount = 1;
-				} else {
-					var fuelSafetyBufferAmount = 0.264;
-				}
-
-				// lap count times the average fuel per lap, plus the fuel safety buffer
-				// then rounded based on the unit type to get a usale final fuel needed amount
-				var finalFuelNeeded = (finalLaps * fuelPerLap + fuelSafetyBufferAmount);
-
-
-
-				console.log(finalLaps);
-
-
-
-
 			} else if (raceDistanceType == "Laps") {
-
+				// since distance is in laps, finals laps in the distance
+				var finalLaps = raceDistance;
 			} else {
 				console.log("Results build failed at raceDistanceType check.");
 			}
+
+			// define the safety buffer to add to fuel calculations to allow for the margin of error
+			// adding 1 liter, or 0.262 gallons, as a buffer. The amounts are the same.
+			if (fuelUnitType == "Liters") {
+				var fuelSafetyBufferAmount = 1;
+			} else if (fuelUnitType == "Gallons") {
+				var fuelSafetyBufferAmount = 0.264;
+			} else {
+				console.log("Results build failed at fuelUnitType check.");
+			}
+
+			// lap count times the average fuel per lap, plus the fuel safety buffer
+			// then rounded to 2 decimal places to get a usable final fuel needed amount
+			var finalFuelNeeded = (finalLaps * fuelPerLap + fuelSafetyBufferAmount);
+			finalFuelNeeded = finalFuelNeeded.toFixed(2);
 
 		};// end results builder
 
