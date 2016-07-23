@@ -1,5 +1,32 @@
 $(document).ready(function() {
 
+	/**** Documentation / Functional Overview ****
+
+	Section 1: Race distance type (laps vs timed)
+	- Define a function to get the value of the selected pill	and adjust
+		the form to respond (assignRaceDistanceType())
+	- Call the function on load
+	- Call the function every time the user clicks on one of the ul#race-distance-type pills
+
+	Section 2: Fuel unit type (liters vs gallons)
+	- Define a function to get the value of the selected pill	and adjust
+		the form to respond (assignFuelUnitType())
+	- Call the function on load
+	- Call the function every time the user clicks on one of the ul#fuel-unit-type pills
+
+	Section 3: Main function to build, and trigger building, the results display
+	- Reset used vars
+	- Check all needed fields based on form state, if empty add an item to the error list
+	- If the error list has errors, display the errors, and don't build the results
+	- If the error list is empty, trigger the results build code
+
+	Section 4: Calling the main results build function
+	- Call the function on load (so it displays all error / "waiting for" text)
+	- Call the function everytime the user clicks on a pill
+	- Call the function everytime the user types a number in any of the input fields
+
+	**** End Documentation ****/
+
 	//// handle selection of the race distance units (laps or timed)
 	// adjust the form to represent the selection of race distance
 	function assignRaceDistanceType() {
@@ -13,16 +40,16 @@ $(document).ready(function() {
 			// set the visual addons
 			$("#race-distance-addon").html("Laps");
 
-			// disable the average race lap time field, not needed when using laps
-			$("#average-race-lap").attr("disabled",true);
+			// disable the average race lap time field, not needed when using laps, swap placeholder text
+			$("#average-race-lap").attr("disabled",true).attr("placeholder","Not needed when using laps");
 
 		} else if (raceDistanceType == "Minutes") {
 
 			// set the visual addons
 			$("#race-distance-addon").html("Minutes");
 
-			// enable the average race lap time field
-			$("#average-race-lap").attr("disabled",false);
+			// enable the average race lap time field, add example placeholder text
+			$("#average-race-lap").attr("disabled",false).attr("placeholder","Example: 92.349");
 		}
 
 	};//end assignRaceDistanceType()
@@ -90,6 +117,9 @@ $(document).ready(function() {
 
 	});//end click()
 
+
+
+
 	//// handle the calculator results
 	// define function to create the results display
 	function createFormResults() {
@@ -110,24 +140,72 @@ $(document).ready(function() {
 
 		// if no errors
 		if (errorText == "") {
+
 			// form ready
 			resultsBuildable = 1;
-			$("#results").html("<h2 style='color:green'>EVERYTHING READY</h2><p><span class='glyphicon glyphicon-refresh glyphicon-spin' aria-hidden='true'></span> Processing...   *NOT IMPLEMENTED*</p>");
+			$("#results").html("<h2 style='color:green'>Results</h2><p><span class='glyphicon glyphicon-refresh glyphicon-spin' aria-hidden='true'></span> Processing...   *NOT IMPLEMENTED*</p>");
+		
 		} else {
+
 			// else, display list of errors
 			$("#results").html("<p>The results will be ready when:</p><ul>" + errorText + "</ul>");
 		}
 
-
-		// build the results
+		// if there were no errors:
+		// build the results!
 		if (resultsBuildable === 1) {
-			// build code / loops here
-		};
 
-		// calc functions checks to make sure all required forms of the present state have valid values
+			// get pill data
+			var raceDistanceType = $('ul#race-distance-type li.active a').html();
+			var fuelUnitType = $('ul#fuel-unit-type li.active a').html();
 
+			// get all (needed) form data
+			var raceDistance = $("#race-distance").val();
+			if (raceDistanceType == "Minutes") {
+				var averageRaceLap = $("#average-race-lap").val();
+			};
+			var fuelPerLap = $("#fuel-per-lap").val();
+			var fuelTankSize = $("#fuel-tank-size").val();
+
+			// find laps and fuel needed, based on the raceDistanceType
+			if (raceDistanceType == "Minutes") {
+
+				// number of minutes times 60 to get race length in seconds
+				// divide that by the average race lap time, then add 1.1 laps as a safety buffer
+				// and then round the number up to get total full final laps
+				var finalLaps = Math.ceil(((raceDistance * 60) / averageRaceLap) + 1.1);
+
+				// define the safety buffer to add to fuel calculations to allow for the margin of error
+				// adding 1 liter, or 0.262 gallons, as a buffer. The amounts are the same.
+				if (fuelUnitType == "Liters") {
+					var fuelSafetyBufferAmount = 1;
+				} else {
+					var fuelSafetyBufferAmount = 0.264;
+				}
+
+				// lap count times the average fuel per lap, plus the fuel safety buffer
+				// then rounded based on the unit type to get a usale final fuel needed amount
+				var finalFuelNeeded = (finalLaps * fuelPerLap + fuelSafetyBufferAmount);
+
+
+
+				console.log(finalLaps);
+
+
+
+
+			} else if (raceDistanceType == "Laps") {
+
+			} else {
+				console.log("Results build failed at raceDistanceType check.");
+			}
+
+		};// end results builder
 
 	};// end createFormResults()
+
+
+
 
 	// init results display
 	createFormResults();
@@ -144,4 +222,4 @@ $(document).ready(function() {
 		createFormResults();
 	});// end click
 
-});//end ready()
+}); //end ready()
