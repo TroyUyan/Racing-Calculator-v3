@@ -15,10 +15,14 @@ $(document).ready(function() {
 	- Call the function every time the user clicks on one of the ul#fuel-unit-type pills
 
 	Section 3: Main function to build, and trigger building, the results display
-	- Reset used vars
+	- Reset used trigger vars
 	- Check all needed fields based on form state, if empty add an item to the error list
 	- If the error list has errors, display the errors, and don't build the results
-	- If the error list is empty, trigger the results build code
+	- If the error list is empty, trigger the results build code, which will:
+	-- Get all final data from the pills / form
+	-- Calculate final lap count
+	-- Create fuel safety buffer based on fuel unit
+	-- Calculate final fuel count
 
 	Section 4: Calling the main results build function
 	- Call the function on load (so it displays all error / "waiting for" text)
@@ -117,9 +121,6 @@ $(document).ready(function() {
 
 	});//end click()
 
-
-
-
 	//// handle the calculator results
 	// define function to create the results display
 	function createFormResults() {
@@ -195,12 +196,30 @@ $(document).ready(function() {
 			var finalFuelNeeded = (finalLaps * fuelPerLap + fuelSafetyBufferAmount);
 			finalFuelNeeded = finalFuelNeeded.toFixed(2);
 
+
+
+
+
+
+			//// v2 code, index.php, line 121:
+			// do we need a fuel stop?
+			// if so, how many?
+
+			//// v2 code, index.php, line 131:
+			// display the numeric results
+
+			//// v2 code, index.php, line 154:
+			// display the fuel stints
+
+
+
+
+
+
+
 		};// end results builder
 
 	};// end createFormResults()
-
-
-
 
 	// init results display
 	createFormResults();
